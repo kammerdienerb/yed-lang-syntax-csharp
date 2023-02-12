@@ -98,13 +98,27 @@ int yed_plugin_boot(yed_plugin *self) {
         APUSH("&code-string");
             REGEX("'(\\\\.|[^'\\\\])'");
 
-            RANGE("\\$?\""); ONELINE(); SKIP("\\\\\"");
+            RANGE("\\$\""); ONELINE(); SKIP("\\\\\"");
+                APUSH("&code-escape");
+                    REGEX("\\\\.");
+                    REGEX("\\{.*\\}");
+                APOP();
+            ENDRANGE("\"");
+
+            RANGE("\\$\"\"\""); SKIP("\\\\\"");
+                APUSH("&code-escape");
+                    REGEX("\\\\.");
+                    REGEX("\\{.*\\}");
+                APOP();
+            ENDRANGE("\"\"\"");
+
+            RANGE("\""); ONELINE(); SKIP("\\\\\"");
                 APUSH("&code-escape");
                     REGEX("\\\\.");
                 APOP();
             ENDRANGE("\"");
 
-            RANGE("\\$?\"\"\""); SKIP("\\\\\"");
+            RANGE("\"\"\""); SKIP("\\\\\"");
                 APUSH("&code-escape");
                     REGEX("\\\\.");
                 APOP();
