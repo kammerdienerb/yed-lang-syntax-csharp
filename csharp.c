@@ -101,14 +101,14 @@ int yed_plugin_boot(yed_plugin *self) {
             RANGE("\\$\""); ONELINE(); SKIP("\\\\\"");
                 APUSH("&code-escape");
                     REGEX("\\\\.");
-                    REGEX("\\{.*\\}");
+                    REGEX("\\{[^}]*\\}");
                 APOP();
             ENDRANGE("\"");
 
             RANGE("\\$\"\"\""); SKIP("\\\\\"");
                 APUSH("&code-escape");
                     REGEX("\\\\.");
-                    REGEX("\\{.*\\}");
+                    REGEX("\\{[^}]*\\}");
                 APOP();
             ENDRANGE("\"\"\"");
 
