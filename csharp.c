@@ -147,6 +147,7 @@ int yed_plugin_boot(yed_plugin *self) {
             KWD("explicit");
             KWD("extern");
             KWD("fixed");
+            KWD("get");
             KWD("implicit");
             KWD("in");
             KWD("interface");
@@ -164,6 +165,7 @@ int yed_plugin_boot(yed_plugin *self) {
             KWD("readonly");
             KWD("ref");
             KWD("sealed");
+            KWD("set");
             KWD("sizeof");
             KWD("stackalloc");
             KWD("static");
@@ -173,6 +175,7 @@ int yed_plugin_boot(yed_plugin *self) {
             KWD("unchecked");
             KWD("unsafe");
             KWD("using");
+            KWD("value");
             KWD("virtual");
             KWD("volatile");
         APOP();
